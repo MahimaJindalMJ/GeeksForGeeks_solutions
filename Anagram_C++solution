@@ -1,0 +1,36 @@
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+int main() 
+{
+	int t;// no. of test cases
+	string st;
+	getline(cin,st);  // just to let compiler read string from next line
+	t=stoi(st);
+	for(int tt=0;tt<t;tt++)
+	{
+	    string s1,s2;
+	    getline(cin,s1,' ');
+	    getline(cin,s2);
+	    int count[256]={0};  //to store frequency of each character, initialise with 0
+	    bool flag=false;
+	    if(s1.length()==s2.length())  // if both string are equal
+	    {
+    	    for(int i=0;i<s1.length();i++)
+    	    {
+    	        count[(int)s1[i]]++; //s1 increment count
+    	        count[(int)s2[i]]--; //s2 decrement count
+    	    }
+    	    for(int i : count)// to check if count of each character is 0
+    	    {
+    	        if(i!=0) {flag=true;break;}
+    	    }
+            if(flag) cout<<"NO"<<endl;
+            else cout<<"YES"<<endl;
+	    }
+	    else
+	        cout<<"NO"<<endl;
+	}
+	return 0;
+}
