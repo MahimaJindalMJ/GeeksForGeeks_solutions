@@ -1,0 +1,27 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=Integer.parseInt(sc.nextLine());
+		for(int tt=0;tt<t;tt++)
+	    {
+	   		String s=sc.nextLine();
+	   		String ans = "";
+	   		int idx,i=0;
+            while ((idx=s.indexOf('.',i))>0 )
+            { 
+                String s2=s.substring(i,idx) ;//store word
+                i=idx+1;
+                ans = s2 + "." + ans; // concat word at starting
+            } 
+            ans=s.substring(i,s.length())+ "."+ans;//concat last word
+            System.out.println(ans.substring(0, ans.length() - 1)); //omit extra .at last
+		}
+	}
+}
+
