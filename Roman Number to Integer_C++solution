@@ -1,0 +1,41 @@
+#include <iostream>
+#include <bits/stdc++.h>  
+
+using namespace std;
+int value(char ch)
+{
+    switch(ch)
+    {
+        case 'M':return 1000; 
+        case 'D':return 500;
+        case 'C':return 100;
+        case 'L':return 50;
+        case 'X':return 10;
+        case 'V':return 5;
+        case 'I':return 1;
+    }
+}
+
+int main() {
+	string t;
+	getline(cin,t);
+	for(int tt=0;tt<stoi(t);tt++)
+	{
+	    string str;
+	    getline(cin,str);
+	    
+        int i=0,sum=0;
+	    while(i<str.length()-1)
+	    {
+            if((value(str[i])<value(str[i+1])) && i<str.length()) 
+                sum-=value(str[i]);
+            else
+                sum+=value(str[i]);
+
+            i++;
+	    }
+        sum+=value(str[i]);
+        cout<<sum<<endl;
+	}
+	return 0;
+}
