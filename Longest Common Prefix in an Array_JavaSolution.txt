@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+    static int ls(String s1,String s2)
+    {
+        int n = (s1.length()<s2.length()) ? s1.length() : s2.length(); 
+        int i;
+        for(i=0;i<n;i++)
+        {
+            if(s1.charAt(i)!=s2.charAt(i))
+            return i-1;
+        }
+        return i-1;
+    }
+    
+	public static void main (String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=Integer.parseInt(sc.nextLine());
+		for(int tt=0;tt<t;tt++)
+	    {
+	   		int n=Integer.parseInt(sc.nextLine());
+	   		String s=sc.nextLine();
+	   		if(n==1)
+	   		{
+	   		     System.out.println(s);
+	   		}
+	   		else
+	   		{
+    	   		String[] arr=s.split(" ");
+    	   		boolean flag=false;
+    	   		int a[]=new int[n-1];
+    	   		for(int k=0;k<n-1;k++)
+        	    {
+        	        a[k]=ls(arr[k],arr[((k+1)%n)]);
+        	    }
+        	    int sm=a[0];
+        	    for(int m=1;m<n-1;m++)
+        	    {
+        	       sm = (a[m]<sm) ? a[m] : sm; 
+        	    }
+        	    if(sm==-1)
+        	        System.out.println("-1");
+        	    else
+        	       System.out.println(s.substring(0,(sm+1)));
+	   		}
+	    }
+	}
+}
