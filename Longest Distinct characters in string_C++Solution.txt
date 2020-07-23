@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h>  
+using namespace std;
+
+int main(){ 
+  
+    string t;
+	getline(cin,t);
+	for(int tt=0;tt<stoi(t);tt++)
+	{
+	    string str;
+	    getline(cin,str);
+	    std::vector<char> chars(str.begin(), str.end());
+	    char *s = &chars[0];
+//	    char* s=strcpy(new char[str.length() + 1], str.c_str());
+        int max=0,i=0;
+        while(i<str.length())
+        {
+            unordered_map<char,int> exists; 
+            int leng = 0;  
+            int temp =i;
+            while(exists[s[i]]==0 && i<str.length()) 
+            { 
+              leng++;
+              exists[s[i]]++;
+              if(leng>max) max=leng;
+              i++;
+            } 
+            i=temp+1;
+        }
+        cout<<max<<endl;
+	}
+  return 0; 
+}
