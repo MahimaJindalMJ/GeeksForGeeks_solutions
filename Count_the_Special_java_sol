@@ -1,0 +1,40 @@
+/*
+Given an arry A (may contain duplicates) of N elements
+and a positive integer K. 
+The task is to count the number of elements which occurs 
+exactly floor(N/K) times in the array.
+
+
+Class Geeks with countSpecials as its member function
+* a : input array
+* n : size of array
+k : to calculate floor(n/k)
+*/
+class Geeks{
+    static void countSpecials(int a[], int n, int k){
+        int f = (int)Math.floor(n/k);
+        int count=0;
+        HashMap<Integer, Integer> map = new HashMap<>(); 
+        for(int i:a)
+        {
+            if (map.containsKey(i)) 
+            { 
+                int ct = map.get(i);
+                map.replace(i,ct,ct+1);
+            }
+            else
+            map.put(i, 1); 
+        }
+        
+        
+        if(map.containsValue(f))
+        {
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) 
+            {
+                if (entry.getValue().equals(f))
+                    count++;
+            }
+        }
+        System.out.println(count);        
+    }
+}
